@@ -1,0 +1,30 @@
+#CI: WITH EVRY PR AND PUSH IT TRIGGRS AUTOMATED BUILD + TEST, CATCING INTEGRATION BUGS EARLY
+#CD(CONTINOIUS DELIVERY) AUTOMATED PACKAGING/STAGING SO RELEASE IS ALWAYS ONE CLICK AWAY 
+#CONTINOUS DEPLOYMENT : DELIVERY + AUTOMATIC PRODUCTION RELEASE 
+
+
+#WORKFLOW MEANS A YAML FILE DESCRIBING THE AUTOMATION
+#EVENT(ON): WHAT TRIGGERS THE WORKFLOW PUSH PULL SCHEDULE ECT.
+#JOB:SET OF STEPS THAT RUN ON THE SAME RUNNER 
+#STEP: A SINGLE TASK A SHELL COMMAND OR AN ACTION 
+# ACTION : A REUSABLE UNIT OF CODE 
+#RUNNER : THE VM/CONTAINER THAT EXECUTES THE JOB
+
+#STRUCTURE OF A SIMPLE WORKFLOW 
+name: CI
+on: push
+jobs: #the tasks the workflow will perferom multiple jobs is a workflow
+  build: # first jon can be named anything 
+    runs-on: ubuntu-latest # code runs on a remote machine , we use linux as it is most commmon 
+    steps:
+      - uses: actions/checkout@v4 #this uses calls an action and is always the first step 
+      - run: echo "hello CI" # we use echo cmd in linux to print something 
+ 
+#COMMON WORKFOLOW TYPES 
+#1 VALIDATE : LINT , TEST(UNIT OR INTEGRATION)
+#2 BUILD : EXECUTABLE , CONTAINER IMAGE 
+#3 DEPLOY : PUSH BASED DEPLOY , UPDTAE TAGS 
+#4 REPO : RELAEASE AUTOMATIONS . STALE ISSUES , DEPENDENCY UPGRADE  
+
+#workflow is just a process which has more than one job 
+#EXAMPLE :  RUN ->BUILD ->DEPLOY

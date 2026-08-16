@@ -1,0 +1,16 @@
+name: CIcd
+#on: [push, workflow_dispatch] # by this we are adding a event by ehich we can manually run a workflow
+on:
+    - push
+    - workflow_dispatch # we can also use this syntax for multiple values 
+jobs: #the tasks the workflow will perferom multiple jobs is a workflow
+  test: # first jon can be named anything 
+    runs-on: ubuntu-latest # code runs on a remote machine , we use linux as it is most commmon 
+    steps:
+      - name: Get Code
+        #now we need to clone our code in the remote machine 
+        run: | # for multiple commands we use this pipe 
+          echo "cloning github repo"
+          echo "${{toJson(github)}}"   
+          git clone https://github.com/${{github.repository}}.git
+          
